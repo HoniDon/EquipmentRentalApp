@@ -83,4 +83,4 @@ Console.WriteLine("\n=== REPORT ===");
 
 Console.WriteLine(rentalService.GenerateReport());
 
-Console.WriteLine("=== END OF APP ===");
+Console.WriteLine("=== END ===");
