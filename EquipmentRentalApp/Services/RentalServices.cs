@@ -83,4 +83,17 @@ public class RentalService
 
         return lateDays * 10; // 10 zł za dzień
     }
+    
+    public List<Equipment> GetAllEquipment()
+    {
+        return _equipmentRepository.GetAll();
+    }
+    
+    public List<Equipment> GetAvailableEquipment()
+    {
+        return _equipmentRepository
+            .GetAll()
+            .Where(e => e.IsAvailable)
+            .ToList();
+    }
 }
