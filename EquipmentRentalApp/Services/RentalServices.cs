@@ -96,4 +96,12 @@ public class RentalService
             .Where(e => e.IsAvailable)
             .ToList();
     }
+    
+    public List<Rental> GetActiveRentalsForUser(int userId)
+    {
+        return _rentalRepository
+            .GetActive()
+            .Where(r => r.User.Id == userId)
+            .ToList();
+    }
 }
