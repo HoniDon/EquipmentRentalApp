@@ -104,4 +104,35 @@ public class RentalService
             .Where(r => r.User.Id == userId)
             .ToList();
     }
+    
+    public List<Rental> GetOverdueRentals()
+    {
+        return _rentalRepository
+            .GetActive()
+            .Where(r => r.DueDate < DateTime.Now)
+            .ToList();
+    }
+    
+    public string GenerateReport()
+    {
+        var totalEquipment = _equipmentRepository.GetAll().Count;
+
+        var availableEquipment = GetAvailableEquipment().Count;
+
+        var activeRentals = _rentalRepository.GetActive().Count;
+
+        var overdueRentals = GetOverdueRentals().Count;
+
+        return $"""
+                EQUIPMENT REPORT
+
+                total equipment: {totalEquipment}
+
+                available equipment: {availableEquipment}
+
+                active rentals: {activeRentals}
+
+                overdue rentals: {overdueRentals}
+                """;
+    }
 }
