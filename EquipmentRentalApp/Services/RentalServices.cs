@@ -54,4 +54,33 @@ public class RentalService
 
         return rental;
     }
+    
+    public void ReturnEquipment(int rentalId)
+    {
+        var rental = _rentalRepository
+            .GetAll()
+            .FirstOrDefault(r => r.Id == rentalId);
+
+        if (rental == null)
+            throw new Exception("Rental not found");
+
+        if (rental.ReturnDate != null)
+            throw new Exception("Equipment already returned");
+
+        rental.ReturnDate = DateTime.Now;
+
+        rental.Equipment.IsAvailable = true;
+
+        rental.Penalty = CalculatePenalty(rental);
+    }
+    
+    private decimal CalculatePenalty(Rental rental)
+    {
+        if (rental.ReturnDate <= rental.DueDate)
+            return 0;
+
+        var lateDays = (rental.ReturnDate.Value - rental.DueDate).Days;
+
+        return lateDays * 10; // 10 zł za dzień
+    }
 }
