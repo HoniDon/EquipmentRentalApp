@@ -26,6 +26,8 @@ Każda klasa ma jedną odpowiedzialność:
 
 ## Decyzje projektowe
 
+Projekt zawiera przykładowy scenariusz działania w Program.cs.
+
 Sprzęt dziedziczy po klasie Equipment, ponieważ wszystkie urządzenia mają wspólne cechy jak Id, Name i status dostępności.
 
 Użytkownicy dziedziczą po klasie User, ponieważ Student i Employee różnią się limitem wypożyczeń.
