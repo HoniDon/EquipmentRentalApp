@@ -12,6 +12,7 @@ var rentalService = new RentalService(
     rentalRepo
 );
 
+Console.WriteLine("=== EQUIPMENT RENTAL APP ===");
 Console.WriteLine("=== ADD EQUIPMENT ===");
 
 equipmentRepo.Add(new Laptop(1, "eq1", 10, "Ryzen 5 5700x3d"));
