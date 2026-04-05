@@ -82,3 +82,5 @@ Console.WriteLine($"penalty = {rental2.Penalty}");
 Console.WriteLine("\n=== REPORT ===");
 
 Console.WriteLine(rentalService.GenerateReport());
+
+Console.WriteLine("=== END ===");
